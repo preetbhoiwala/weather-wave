@@ -215,7 +215,7 @@ function App() {
 
             <UTCDatetime />
             <Link
-              href="https://github.com/preetbhoiwala"
+              href="https://github.com/preetbhoiwala/weather-wave"
               target="_blank"
               underline="none"
               sx={{ display: 'flex' }}
