@@ -1,7 +1,7 @@
 const GEO_API_URL = 'https://wft-geo-db.p.rapidapi.com/v1/geo';
 
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5';
-const WEATHER_API_KEY = 'Your API KEY';
+const WEATHER_API_KEY = 'e59edaa7355ce7655533af75a66af53b';
 
 const GEO_API_OPTIONS = {
   method: 'GET',
@@ -33,14 +33,24 @@ export async function fetchWeatherData(lat, lon) {
 export async function fetchCities(input) {
   try {
     const response = await fetch(
-      `${GEO_API_URL}/cities?minPopulation=10000&namePrefix=${input}`,
+      `${GEO_API_URL}/cities?minPopulation=5000&namePrefix=${input}&countryIds=US`,
       GEO_API_OPTIONS
     );
-
     const data = await response.json();
-    return data;
+    return {
+
+      data: data.data.map(city => ({
+        name: city.city,
+        state: city.regionCode,
+        latitude: city.latitude,
+        longitude: city.longitude,
+        countryCode: city.countryCode,
+        displayName: `${city.city}, ${city.regionCode}`
+
+      }))
+    };
   } catch (error) {
-    console.log(error);
-    return;
+    console.log('Error fetching cities:', error);
+    return { data: [] };
   }
 }

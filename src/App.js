@@ -144,7 +144,9 @@ function App() {
             }}
           >
             Loading...
+            
           </Typography>
+
         </LoadingBox>
       </Box>
     );
@@ -173,22 +175,43 @@ function App() {
         <Grid item xs={12}>
           <Box
             display="flex"
-            justifyContent="space-between"
+            flexDirection="column"
             alignItems="center"
+            justifyContent="center"
+           
             sx={{
               width: '100%',
-              marginBottom: '1rem',
+              marginBottom: '2rem',
             }}
           >
             <Box
               component="img"
-              sx={{
-                height: { xs: '16px', sm: '22px', md: '26px' },
-                width: 'auto',
-              }}
-              alt="logo"
+              alt="WeatherWave Logo"
               src={Logo}
+              sx={{
+                width: { xs: '160px', sm: '200px', md: '240px' },
+                height: { xs: '160px', sm: '200px', md: '240px' },
+                objectFit: 'cover',
+                borderRadius: '50%',
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+                mb:1,
+
+              }}
             />
+              <Typography
+                variant="h4"
+                component="p"
+                sx={{
+                  color: 'White',
+                  fontFamily: 'Montserrat',
+                  textAlign: 'center',
+                  fontWeight: '600',
+                  mb: 2,
+                }}
+              >
+    Weather Wave — Your Weather, Simplified!
+  </Typography>
 
             <UTCDatetime />
             <Link
